@@ -13,13 +13,13 @@ import Button from "@mui/material/Button";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 const BAR_MENU = {
-  color: "primary.main",
-  bgcolor: "white",
+  color: "white",
+  bgcolor: "transparent",
   border: "none",
   paddingX: "5px",
-  borderRadius: "5px",
-  "& .MuiSvgIcon-root": {
-    color: "primary.main",
+  borderRadius: "4px",
+  ".MuiSvgIcon-root": {
+    color: "white",
   },
   "&:hover": {
     bgcolor: "primary.50",
@@ -38,8 +38,10 @@ function BoardBar() {
           justifyContent: "space-between",
           gap: 2,
           overflowX: "auto",
-          borderTop: "1px solid #00bfa5",
           paddingX: 2,
+          bgcolor: (theme) =>
+            theme.palette.mode === "dark" ? "#34495e" : "#1976d2",
+          borderBottom: "1px solid white",
         }}
       >
         <Box
@@ -87,13 +89,26 @@ function BoardBar() {
             gap: 2,
           }}
         >
-          <Button variant="outlined" startIcon={<PersonAddIcon />}>
+          <Button
+            sx={{
+              color: "white",
+              borderColor: "white",
+              "&:hover": { borderColor: "white" },
+            }}
+            variant="outlined"
+            startIcon={<PersonAddIcon />}
+          >
             Invite
           </Button>
           <AvatarGroup
             max={6}
             sx={{
-              "& .MuiAvatar-root": { width: 34, height: 34, fontSize: 16 },
+              "& .MuiAvatar-root": {
+                width: 34,
+                height: 34,
+                fontSize: 16,
+                border: "none",
+              },
             }}
           >
             <Tooltip title="Bách Hợp Account">
