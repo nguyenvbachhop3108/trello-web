@@ -11,6 +11,7 @@ import Tooltip from "@mui/material/Tooltip";
 import avatar from "~/assets/avatar.jpg";
 import Button from "@mui/material/Button";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { capitalizeFirstLetter } from "~/utils/formatter";
 
 const BAR_MENU = {
   color: "white",
@@ -25,7 +26,7 @@ const BAR_MENU = {
     bgcolor: "primary.50",
   },
 };
-function BoardBar() {
+function BoardBar({ board }) {
   return (
     <div>
       <Box
@@ -41,7 +42,6 @@ function BoardBar() {
           paddingX: 2,
           bgcolor: (theme) =>
             theme.palette.mode === "dark" ? "#34495e" : "#1976d2",
-          borderBottom: "1px solid white",
         }}
       >
         <Box
@@ -54,13 +54,13 @@ function BoardBar() {
           <Chip
             sx={BAR_MENU}
             icon={<DashboardIcon />}
-            label="Bách Hợp MERN"
+            label={board?.title}
             clickable
           />
           <Chip
             sx={BAR_MENU}
             icon={<VpnLockIcon />}
-            label="Public/Private Workspaces "
+            label={capitalizeFirstLetter(board?.type)}
             clickable
           />
           <Chip
@@ -139,14 +139,6 @@ function BoardBar() {
               <Avatar alt="Remy Sharp" src={avatar} />
             </Tooltip>
           </AvatarGroup>
-
-          {/* <AvatarGroup max={4}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-            <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
-            <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
-          </AvatarGroup> */}
         </Box>
       </Box>
     </div>
