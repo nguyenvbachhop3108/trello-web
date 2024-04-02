@@ -22,16 +22,23 @@ import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
 
 function Column({ column }) {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({
-      id: column._id,
-      data: { ...column },
-    });
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: column._id,
+    data: { ...column },
+  });
 
   const dndKitColumnStyle = {
-    touchAction:"none",
+    touchAction: "none",
     transform: CSS.Translate.toString(transform),
     transition,
+    opacity: isDragging ? 0.5 : null,
   };
 
   const [anchorEl, setAnchorEl] = useState(null);
